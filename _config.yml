@@ -2,14 +2,14 @@
 title: ~/mhadev/blog
 # tagline: "A Jekyll theme"
 baseurl: ""
-paginate: 1
+paginate: 5
 permalink: pretty
 
 # About/contact
 author:
-  name: Mark Otto
-  url: https://twitter.com/mdo
-  email: markdotto@gmail.com
+  name: Mahmut Hilmi Arıkmert
+  url: https://twitter.com/mharikmert
+  email: contact@mharikmert.dev
 
 # Gems
 plugins:

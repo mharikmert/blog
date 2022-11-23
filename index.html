@@ -12,10 +12,18 @@ title: Home
       </a>
     </h1>
 
-    <span class="post-date">{{ post.date | date_to_string }}</span>
+    <span class="post-date">
+      <span class="post-date-item">
+        {{ post.date | date: "%B %d, %Y" }}
+      </span>
+      <span class="post-date-item" style="float:right">
+        {% assign words = post.content | number_of_words %}
+        {% if words < 100 %} {{ words }} words {% else %} {{ words | divided_by: 100 }} min read {% endif %} </span>
+      </span>
 
-    {{ post.content | strip_html | truncatewords: 50 }}
-    <a href="{{ post.url | absolute_url }}">Continue reading</a>
+
+      {{ post.content | strip_html | truncatewords: 50 }}
+      <a href="{{ post.url | absolute_url }}">Continue reading</a>
 
   </div>
   {% endfor %}

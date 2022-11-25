@@ -14,9 +14,20 @@ title: Home
 
     <span class="post-date">
       <span class="post-date-item">
-        {{ post.date | date: "%B %d, %Y" }}
+        <svg style="margin-bottom: -2.5px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none"
+          stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"></path>
+        </svg>
+        Published: {{ post.date | date: "%B %d, %Y" }}
       </span>
-      <span class="post-date-item" style="float:right">
+
+
+      <span class="post-date-item" style="float:right; margin:auto">
+        <svg style="margin-bottom: -1.4px;" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none"
+          stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <circle cx="16" cy="16" r="14"></circle>
+          <path d="M16 8 L16 16 20 20"></path>
+        </svg>
         {% assign words = post.content | number_of_words %}
         {% if words < 100 %} {{ words }} words {% else %} {{ words | divided_by: 100 }} min read {% endif %} </span>
       </span>

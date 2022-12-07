@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introduction to GitOps with Flux on Kubernetes
-permalink: intro-to-gitops-with-flux
+permalink: /intro-to-gitops-with-flux/
 ---
 There are many ways to manage your Kubernetes cluster, but one of the most popular ways and the one we'll be looking at in this post is [GitOps](https://www.weave.works/technologies/gitops/).
 

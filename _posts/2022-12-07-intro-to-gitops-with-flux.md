@@ -99,7 +99,7 @@ spec:
     spec:
       containers:
       - name: blog
-        image: ghcr.io/mharikmert/blog:v0.0.12
+        image: ghcr.io/mharikmert/blog:v0.0.15
 ---
 apiVersion: v1
 kind: Service

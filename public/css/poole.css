@@ -264,6 +264,14 @@ img {
   max-width: 100%;
   margin: 0 0 1rem;
   border-radius: 5px;
+  cursor: -webkit-zoom-in
+}
+
+img.active:hover {
+  transform: scale(2);
+  cursor: -webkit-zoom-out;
+  transition: transform .5s ease;
+
 }
 
 /* Tables */

@@ -1,15 +1,25 @@
-(function(document) {
-  var toggle = document.querySelector('.sidebar-toggle');
-  var sidebar = document.querySelector('#sidebar');
-  var checkbox = document.querySelector('#sidebar-checkbox');
+const images = document.querySelectorAll('img');
 
-  document.addEventListener('click', function(e) {
-    var target = e.target;
+images.forEach(image => {
+    image.addEventListener('mouseover', () => {
+        if (image.classList.contains('active')) {
+            return;
+        }
+        images.forEach(image => image.classList.remove('active'));
 
-    if(!checkbox.checked ||
-       sidebar.contains(target) ||
-       (target === checkbox || target === toggle)) return;
+        image.classList.add('active');
 
-    checkbox.checked = false;
-  }, false);
-})(document);
+    });
+
+    image.addEventListener('mouseout', () => {
+        image.classList.remove('active');
+    });
+
+    image.addEventListener('click', () => {
+        if (image.classList.contains('active')) {
+            image.classList.remove('active');
+        } else {
+            image.classList.add('active');
+        }
+    });
+});

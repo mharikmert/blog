@@ -7,11 +7,11 @@ There are many ways to manage your Kubernetes cluster, but one of the most popul
 
 ### What is GitOps? ###
 
-GitOps is a way of managing your infrastructure by using Git as a single source of truth for your <strong>desired state</strong>. This means that you can use Git to manage your cluster by keeping your cluster in sync with your repository. This allows you to creating new resources, updating existing resources, and deleting resources by simply committing changes to the repository.
+GitOps is a way of managing your infrastructure by using Git as a single source of truth for your desired state. This means that you can use Git to manage your cluster by keeping your cluster in sync with your repository. This allows you to creating new resources, updating existing resources, and deleting resources by simply committing changes to the repository.
 
- To briefly mention about the <strong>desired state</strong>, it is the state that you want your cluster to be in. For example, you might want to have a deployment with 3 replicas, or you might want to have a service with a specific port. These are all examples of the desired state.
+To briefly mention about the desired state, it is the state that you want your cluster to be in. For example, you might want to have a deployment with 3 replicas, or you might want to have a service with a specific port. These are all examples of the desired state.
 
-So, how can we practically use <strong>GitOps </strong>to manage our cluster? That's where <strong>Flux</strong> comes in.
+So, how can we practically use GitOps to manage our cluster? That's where Flux comes in.
 
 ### What is Flux? ###
 

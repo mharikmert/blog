@@ -7,8 +7,6 @@ images.forEach(image => {
         }
         images.forEach(image => image.classList.remove('active'));
 
-        image.classList.add('active');
-
     });
 
     image.addEventListener('mouseout', () => {

@@ -20,7 +20,7 @@ To follow along with this post, you'll need:
 
 ### Bootstrapping Flux ###
 
-We will use the same repository that we created in the previous post, but we will reboostrap Flux with a different set of components. We will be using the `--components-extra` flag to add the `image-reflector-controller` and `image-automation-controller` components to the default set of components. These components will allow us to automate the deployment of our workloads.
+We will use the same repository that we created in the previous post, but we will bootstrap Flux with a different set of components. We will be using the `--components-extra` flag to add the `image-reflector-controller` and `image-automation-controller` components to the default set of components. These components will allow us to automate the deployment of our workloads.
 
 - `image-reflector-controller` scans image repositories and reflects the image metadata in Kubernetes resources.
 - `image-automation-controller` updates YAML files based on the latest images scanned, and commits the changes to a given Git repository.
@@ -52,12 +52,12 @@ If you bootstrap Flux for the first time, you will also see the deployment and s
 
 As we've seen in the diagram above, Flux will need a few resources to perform image update automation. These resources are:
 
-- `image-repository` resource that defines the container registry to scan.
-- `image-policy` resource that defines [semver range](https://semver.org/) to use when filtering tags.
-- `image-update-automation` resource that defines the required configuration to commit the changes to the Git repository and perform image updates.
-- `git-repository` resource that defines the Git repository to commit the changes. (This resource is created by Flux during bootstrap.)
+- `image-repository` resource defines the container registry to scan.
+- `image-policy` resource defines [semver range](https://semver.org/) to use when filtering tags.
+- `image-update-automation` resource defines the required configuration to commit the changes to the Git repository and perform image updates.
+- `git-repository` resource defines the Git repository to commit the changes. (This resource is created by Flux during bootstrap.)
 
-We will use the `flux create` command to create these resources instead of creating them manually. We will also use the `--export` flag to export the manifests to a file instead of applying them to the cluster.
+We will use `flux create` command to create these resources instead of creating them manually. We will also use the `--export` flag to export the manifests to a file instead of applying them to the cluster.
 
 ```bash
 flux create image repository blog-image-repository \
@@ -166,7 +166,7 @@ spec:
 ### Committing the Manifests ###
 
 Now, we are ready to commit the manifests and push them to the Git repository.
-To look over our changes,
+To review our changes,
 
 - Created `blog-image-repository.yaml` and `blog-image-policy.yaml` files under `clusters/my-cluster/blog` folder.
 - Created `image-update-automation.yaml` file under `clusters/my-cluster/flux-system` folder.
@@ -190,6 +190,8 @@ kubectl get imagerepositories,imagepolicies,imageupdateautomations -n flux-syste
 
 ![k-get-resources-created](https://user-images.githubusercontent.com/42295478/212561141-242077c5-6813-40dd-a033-b8109d0f60d7.png)
 
+We can see the image tags of the image repository scanned by the `image-reflector-controller` in the `imagerepository` resource.
+
 If our setup for the continuous delivery works correctly, `image-automation-controller` will update the image tag of the deployment to the latest version depending on the policy we defined.
 
 ```bash
@@ -200,9 +202,9 @@ kubectl get deploy -o wide --watch
 
 ### Conclusion ###
 
- In this post, we've seen how to set up a GitOps continous delivery workflow with FluxCD and automate deployments. GitOps is a powerful approach to manage and automate Kubernetes deployments. By using a tool like FluxCD, it becomes even easier to implement GitOps and achieve continuous delivery. Overall, GitOps and FluxCD are powerful tools that can help you streamline your deployment process and improve the reliability of your Kubernetes deployments.
+ In this post, we've seen how to set up a GitOps continuos delivery workflow with FluxCD and automate deployments. GitOps is a powerful approach to manage and automate Kubernetes deployments. By using a tool like FluxCD, it becomes even easier to implement GitOps and achieve continuous delivery. Overall, GitOps and FluxCD are powerful tools that can help you streamline your deployment process and improve the reliability of your Kubernetes deployments.
 
- You can also check out my original continuous delivery workflow that runs for multiple applications in multiple subdomains of [mharikmert.dev](https://mharikmert.dev) in the same cluster [here](https://github.com/mharikmert/mharikmert.dev-infra).
+ You can also check out my continuous delivery workflow that runs for multiple applications in multiple subdomains of [mharikmert.dev](https://mharikmert.dev) in the same cluster [here](https://github.com/mharikmert/mharikmert.dev-infra).
 
 ### Resources ###
 

@@ -15,3 +15,5 @@ RUN jekyll build
 FROM lipanski/docker-static-website:latest
 
 COPY --from=builder /src/jekyll/_site .
+
+CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000", "-c", "httpd.conf"]
